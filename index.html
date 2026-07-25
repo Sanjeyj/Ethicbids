@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EthicsBids Technologies — Building Ethical Technology for Tomorrow</title>
+  <meta name="description" content="EthicsBids Technologies delivers secure digital solutions, AI-powered innovation, cybersecurity expertise, software engineering, cloud infrastructure, research, and professional technology education.">
+  <meta name="keywords" content="EthicsBids, cybersecurity, software development, AI, automation, cloud solutions, research, technology consulting, training, ethical technology">
+  <meta name="author" content="EthicsBids Technologies">
+  <meta property="og:title" content="EthicsBids Technologies — Where Ethics Meets Technology">
+  <meta property="og:description" content="Building Ethical Technology for Tomorrow. Cybersecurity, AI, Software Engineering, Cloud & Research.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ethicbids.vercel.app">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Preloader -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-rings">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+      </div>
+      <div class="preloader-logo">
+        <img src="images/logo.png" alt="EthicsBids Technologies" class="preloader-logo-img">
+      </div>
+      <div class="preloader-text">
+        <span class="preloader-name">EthicsBids Technologies</span>
+        <span class="preloader-tagline">Where Ethics Meets Technology</span>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill" id="preloaderBar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="EthicsBids Technologies Home">
+        <img src="images/logo.png" alt="EthicsBids" class="nav-logo-img">
+        <span class="nav-logo-text">EthicsBids</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#hero" class="nav-link active" data-section="hero">Home</a></li>
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#services" class="nav-link" data-section="services">Services</a></li>
+        <li><a href="#stack" class="nav-link" data-section="stack">Technologies</a></li>
+        <li><a href="#roadmap" class="nav-link" data-section="roadmap">Roadmap</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <a href="#contact" class="nav-cta magnetic-btn" id="navCta">
+        <span>Let's Connect</span>
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul class="mobile-links" role="list">
+        <li><a href="#hero" class="mobile-link">Home</a></li>
+        <li><a href="#about" class="mobile-link">About</a></li>
+        <li><a href="#services" class="mobile-link">Services</a></li>
+        <li><a href="#stack" class="mobile-link">Technologies</a></li>
+        <li><a href="#roadmap" class="mobile-link">Roadmap</a></li>
+        <li><a href="#contact" class="mobile-link">Contact</a></li>
+      </ul>
+      <a href="#contact" class="mobile-cta">Let's Connect →</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  HERO                                       -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="hero" class="hero" aria-label="Hero">
+    <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-aurora" aria-hidden="true"></div>
+    <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal-up">
+        <span class="badge-dot" aria-hidden="true"></span>
+        Where Ethics Meets Technology
+      </div>
+
+      <h1 class="hero-headline reveal-up" style="--delay: 0.15s">
+        Building Ethical<br>
+        <span class="hero-headline-gradient">Technology</span><br>
+        for Tomorrow
+      </h1>
+
+      <p class="hero-sub reveal-up" style="--delay: 0.3s">
+        EthicsBids Technologies delivers secure digital solutions, AI-powered innovation,<br class="desktop-br">
+        cybersecurity expertise, software engineering, cloud infrastructure,<br class="desktop-br">
+        research, and professional technology education.
+      </p>
+
+      <div class="hero-actions reveal-up" style="--delay: 0.45s">
+        <a href="#services" class="btn btn-primary magnetic-btn" id="heroBtn1">
+          <span>Explore Services</span>
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a href="#contact" class="btn btn-ghost magnetic-btn" id="heroBtn2">
+          <span>Contact Us</span>
+        </a>
+      </div>
+    </div>
+
+    <a href="#about" class="hero-scroll-indicator" aria-label="Scroll to About section">
+      <div class="scroll-indicator-inner">
+        <div class="scroll-indicator-line"></div>
+      </div>
+      <span>Scroll</span>
+    </a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  TRUST MARQUEE                              -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="trust-section" aria-label="Trusted by">
+    <div class="trust-header">
+      <span>Trusted By</span>
+    </div>
+    <div class="marquee-wrapper">
+      <div class="marquee-track" aria-hidden="true">
+        <div class="marquee-item"><i class="fas fa-graduation-cap"></i> Students</div>
+        <div class="marquee-item"><i class="fas fa-microscope"></i> Researchers</div>
+        <div class="marquee-item"><i class="fas fa-code"></i> Developers</div>
+        <div class="marquee-item"><i class="fas fa-rocket"></i> Startups</div>
+        <div class="marquee-item"><i class="fas fa-building-columns"></i> Institutions</div>
+        <div class="marquee-item"><i class="fas fa-hospital"></i> Healthcare</div>
+        <div class="marquee-item"><i class="fas fa-store"></i> Retail</div>
+        <div class="marquee-item"><i class="fas fa-handshake"></i> Partners</div>
+        <div class="marquee-item"><i class="fas fa-briefcase"></i> Businesses</div>
+        <!-- Duplicate for seamless loop -->
+        <div class="marquee-item"><i class="fas fa-graduation-cap"></i> Students</div>
+        <div class="marquee-item"><i class="fas fa-microscope"></i> Researchers</div>
+        <div class="marquee-item"><i class="fas fa-code"></i> Developers</div>
+        <div class="marquee-item"><i class="fas fa-rocket"></i> Startups</div>
+        <div class="marquee-item"><i class="fas fa-building-columns"></i> Institutions</div>
+        <div class="marquee-item"><i class="fas fa-hospital"></i> Healthcare</div>
+        <div class="marquee-item"><i class="fas fa-store"></i> Retail</div>
+        <div class="marquee-item"><i class="fas fa-handshake"></i> Partners</div>
+        <div class="marquee-item"><i class="fas fa-briefcase"></i> Businesses</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  ABOUT                                      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="about" class="section about-section" aria-label="About EthicsBids Technologies">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual scroll-reveal">
+          <div class="about-art">
+            <div class="art-ring art-ring-1" aria-hidden="true"></div>
+            <div class="art-ring art-ring-2" aria-hidden="true"></div>
+            <div class="art-ring art-ring-3" aria-hidden="true"></div>
+            <div class="art-core" aria-hidden="true">
+              <div class="art-core-inner">
+                <i class="fas fa-shield-halved" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="art-orbit art-orbit-1" aria-hidden="true">
+              <div class="orbit-dot"><i class="fas fa-brain"></i></div>
+            </div>
+            <div class="art-orbit art-orbit-2" aria-hidden="true">
+              <div class="orbit-dot"><i class="fas fa-lock"></i></div>
+            </div>
+            <div class="art-orbit art-orbit-3" aria-hidden="true">
+              <div class="orbit-dot"><i class="fas fa-cloud"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content scroll-reveal" style="--reveal-delay: 0.2s">
+          <div class="section-tag">About Us</div>
+          <h2 class="section-headline">
+            Technology that<br>
+            <span class="text-accent">serves people</span>
+          </h2>
+          <p class="section-body">
+            EthicsBids Technologies is an innovation-driven technology company delivering ethical, secure, and intelligent digital solutions. We combine cybersecurity, artificial intelligence, software engineering, cloud infrastructure, and professional education under one unified mission.
+          </p>
+          <p class="section-body">
+            We work with students, startups, businesses, institutions, and organizations — building technology that is not just powerful, but responsible.
+          </p>
+          <div class="about-pillars">
+            <div class="pillar">
+              <div class="pillar-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+              <span>Security First</span>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
+              <span>AI-Powered</span>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+              <span>Human-Centered</span>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon"><i class="fas fa-infinity" aria-hidden="true"></i></div>
+              <span>Future-Focused</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  WHY CHOOSE ETHICSBIDS                      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="why" class="section why-section" aria-label="Why Choose EthicsBids">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag">Why Us</div>
+        <h2 class="section-headline centered">Why Choose<br><span class="text-accent">EthicsBids</span></h2>
+        <p class="section-desc centered">We combine expertise, innovation, and affordability to deliver solutions that make a difference.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card glass-card tilt-card scroll-reveal" style="--reveal-delay: 0s">
+          <div class="why-card-glow"></div>
+          <div class="why-icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
+          <h3>Experienced Professionals</h3>
+          <p>A team of skilled engineers, researchers, and educators with deep domain expertise across technology disciplines.</p>
+        </div>
+        <div class="why-card glass-card tilt-card scroll-reveal" style="--reveal-delay: 0.1s">
+          <div class="why-card-glow"></div>
+          <div class="why-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
+          <h3>Innovative Solutions</h3>
+          <p>We apply cutting-edge technology and creative thinking to solve real problems for real people.</p>
+        </div>
+        <div class="why-card glass-card tilt-card scroll-reveal" style="--reveal-delay: 0.2s">
+          <div class="why-card-glow"></div>
+          <div class="why-icon"><i class="fas fa-tag" aria-hidden="true"></i></div>
+          <h3>Affordable Services</h3>
+          <p>Premium quality at accessible pricing — because great technology should not be a privilege.</p>
+        </div>
+        <div class="why-card glass-card tilt-card scroll-reveal" style="--reveal-delay: 0.3s">
+          <div class="why-card-glow"></div>
+          <div class="why-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+          <h3>Industry-Oriented Training</h3>
+          <p>Hands-on workshops, seminars, and internship programs designed for real-world technology careers.</p>
+        </div>
+        <div class="why-card glass-card tilt-card scroll-reveal" style="--reveal-delay: 0.4s">
+          <div class="why-card-glow"></div>
+          <div class="why-icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
+          <h3>Customer-Centric Approach</h3>
+          <p>Your goals are our mission. We listen first, then build — ensuring every solution is tailored to your needs.</p>
+        </div>
+        <div class="why-card glass-card tilt-card scroll-reveal" style="--reveal-delay: 0.5s">
+          <div class="why-card-glow"></div>
+          <div class="why-icon"><i class="fas fa-headset" aria-hidden="true"></i></div>
+          <h3>Reliable Technical Support</h3>
+          <p>Dedicated support and ongoing guidance — we stand by our work long after delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  SERVICES — BENTO GRID                      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="services" class="section services-section" aria-label="Our Services">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag">What We Build</div>
+        <h2 class="section-headline centered">Services Built<br>for <span class="text-accent">Every Scale</span></h2>
+      </div>
+
+      <div class="bento-grid">
+
+        <!-- Cybersecurity — large -->
+        <div class="bento-card bento-large glass-card tilt-card scroll-reveal" data-accent="#00BFFF" style="--reveal-delay: 0s">
+          <div class="bento-glow" style="--glow-color: #00BFFF"></div>
+          <div class="bento-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+          <div class="bento-content">
+            <h3 class="bento-title">Cybersecurity</h3>
+            <p class="bento-desc">Defending your digital assets with proactive, intelligence-driven security.</p>
+            <ul class="bento-list">
+              <li>Penetration Testing</li>
+              <li>Security Audits &amp; Risk Assessment</li>
+              <li>Network Security</li>
+              <li>Security Awareness Training</li>
+            </ul>
+          </div>
+          <div class="bento-corner-tag">Core</div>
+        </div>
+
+        <!-- Software Development -->
+        <div class="bento-card glass-card tilt-card scroll-reveal" data-accent="#8B5CF6" style="--reveal-delay: 0.1s">
+          <div class="bento-glow" style="--glow-color: #8B5CF6"></div>
+          <div class="bento-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+          <div class="bento-content">
+            <h3 class="bento-title">Software Development</h3>
+            <p class="bento-desc">Full-stack engineering from web to mobile to custom platforms.</p>
+            <ul class="bento-list">
+              <li>Web &amp; Mobile Applications</li>
+              <li>APIs &amp; Custom Software</li>
+              <li>Database Architecture</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Cloud & IT -->
+        <div class="bento-card glass-card tilt-card scroll-reveal" data-accent="#00FFE5" style="--reveal-delay: 0.2s">
+          <div class="bento-glow" style="--glow-color: #00FFE5"></div>
+          <div class="bento-icon"><i class="fas fa-cloud" aria-hidden="true"></i></div>
+          <div class="bento-content">
+            <h3 class="bento-title">Cloud &amp; IT Solutions</h3>
+            <p class="bento-desc">Scalable cloud architecture and reliable infrastructure management.</p>
+            <ul class="bento-list">
+              <li>Cloud Deployment</li>
+              <li>Server &amp; Network Management</li>
+              <li>Infrastructure Support</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- AI & Automation — wide -->
+        <div class="bento-card bento-wide glass-card tilt-card scroll-reveal" data-accent="#8B5CF6" style="--reveal-delay: 0.1s">
+          <div class="bento-glow" style="--glow-color: #8B5CF6"></div>
+          <div class="bento-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
+          <div class="bento-content">
+            <h3 class="bento-title">AI &amp; Automation</h3>
+            <p class="bento-desc">Intelligent systems that learn, adapt, and scale with your business.</p>
+            <ul class="bento-list bento-list-inline">
+              <li>AI Solutions</li>
+              <li>Intelligent Automation</li>
+              <li>AI Integration</li>
+              <li>LLM Applications</li>
+            </ul>
+          </div>
+          <div class="bento-corner-tag">AI</div>
+        </div>
+
+        <!-- Training & Education -->
+        <div class="bento-card glass-card tilt-card scroll-reveal" data-accent="#00BFFF" style="--reveal-delay: 0.3s">
+          <div class="bento-glow" style="--glow-color: #00BFFF"></div>
+          <div class="bento-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+          <div class="bento-content">
+            <h3 class="bento-title">Training &amp; Education</h3>
+            <p class="bento-desc">Hands-on programs bridging academic learning and industry practice.</p>
+            <ul class="bento-list">
+              <li>Cybersecurity &amp; Programming</li>
+              <li>Workshops &amp; Seminars</li>
+              <li>Internship Programs</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Research & Innovation -->
+        <div class="bento-card glass-card tilt-card scroll-reveal" data-accent="#00FFE5" style="--reveal-delay: 0.4s">
+          <div class="bento-glow" style="--glow-color: #00FFE5"></div>
+          <div class="bento-icon"><i class="fas fa-flask" aria-hidden="true"></i></div>
+          <div class="bento-content">
+            <h3 class="bento-title">Research &amp; Innovation</h3>
+            <p class="bento-desc">Exploring the frontier of emerging technologies through applied research.</p>
+            <ul class="bento-list">
+              <li>Academic Research</li>
+              <li>Product Innovation</li>
+              <li>Open Source Projects</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Consulting — small highlight -->
+        <div class="bento-card bento-small glass-card tilt-card scroll-reveal" data-accent="#00BFFF" style="--reveal-delay: 0.5s">
+          <div class="bento-glow" style="--glow-color: #00BFFF"></div>
+          <div class="bento-icon"><i class="fas fa-comments" aria-hidden="true"></i></div>
+          <div class="bento-content">
+            <h3 class="bento-title">Technology Consulting</h3>
+            <p class="bento-desc">Strategic technology guidance to accelerate your digital transformation.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  INDUSTRIES                                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="industries" class="section industries-section" aria-label="Industries We Serve">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag">Industries</div>
+        <h2 class="section-headline centered">Built for<br><span class="text-accent">Every Industry</span></h2>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-card scroll-reveal" style="--reveal-delay: 0s">
+          <div class="industry-icon"><i class="fas fa-building-columns" aria-hidden="true"></i></div>
+          <span>Educational Institutions</span>
+        </div>
+        <div class="industry-card scroll-reveal" style="--reveal-delay: 0.1s">
+          <div class="industry-icon"><i class="fas fa-building" aria-hidden="true"></i></div>
+          <span>Small &amp; Medium Businesses</span>
+        </div>
+        <div class="industry-card scroll-reveal" style="--reveal-delay: 0.15s">
+          <div class="industry-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
+          <span>Startups</span>
+        </div>
+        <div class="industry-card scroll-reveal" style="--reveal-delay: 0.2s">
+          <div class="industry-icon"><i class="fas fa-hospital" aria-hidden="true"></i></div>
+          <span>Healthcare</span>
+        </div>
+        <div class="industry-card scroll-reveal" style="--reveal-delay: 0.25s">
+          <div class="industry-icon"><i class="fas fa-store" aria-hidden="true"></i></div>
+          <span>Retail</span>
+        </div>
+        <div class="industry-card scroll-reveal" style="--reveal-delay: 0.3s">
+          <div class="industry-icon"><i class="fas fa-microchip" aria-hidden="true"></i></div>
+          <span>Technology Companies</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  VISION & MISSION                           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="vision" class="section vision-section" aria-label="Vision and Mission">
+    <div class="vision-bg-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="vision-grid">
+        <div class="vision-block scroll-reveal">
+          <div class="section-tag">Our Vision</div>
+          <h2 class="vision-statement" id="visionText">
+            We believe the next generation of technology must be intelligent, ethical, secure, and accessible to everyone.
+          </h2>
+        </div>
+        <div class="mission-block scroll-reveal" style="--reveal-delay: 0.2s">
+          <div class="section-tag">Our Mission</div>
+          <h3 class="mission-statement">
+            To deliver secure, responsible, and innovative digital solutions — while empowering students, businesses, and communities through technology education and research.
+          </h3>
+          <div class="mission-chain">
+            <div class="chain-link">
+              <span class="chain-dot" aria-hidden="true"></span>
+              <p>Ethics creates <strong>trust</strong></p>
+            </div>
+            <div class="chain-link">
+              <span class="chain-dot" aria-hidden="true"></span>
+              <p>Trust creates <strong>adoption</strong></p>
+            </div>
+            <div class="chain-link">
+              <span class="chain-dot" aria-hidden="true"></span>
+              <p>Adoption creates <strong>impact</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  TECHNOLOGY STACK                           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="stack" class="section stack-section" aria-label="Technology Stack">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag">Tech Stack</div>
+        <h2 class="section-headline centered">Our Technology<br><span class="text-accent">Arsenal</span></h2>
+      </div>
+      <div class="tech-chips-wrap scroll-reveal">
+        <div class="tech-chip"><i class="fab fa-python" aria-hidden="true"></i> Python</div>
+        <div class="tech-chip"><i class="fab fa-js-square" aria-hidden="true"></i> JavaScript</div>
+        <div class="tech-chip"><i class="fab fa-react" aria-hidden="true"></i> React</div>
+        <div class="tech-chip"><i class="fab fa-node-js" aria-hidden="true"></i> Node.js</div>
+        <div class="tech-chip"><i class="fas fa-cloud" aria-hidden="true"></i> Cloud</div>
+        <div class="tech-chip"><i class="fas fa-shield-halved" aria-hidden="true"></i> Cybersecurity</div>
+        <div class="tech-chip"><i class="fas fa-brain" aria-hidden="true"></i> AI / ML</div>
+        <div class="tech-chip"><i class="fas fa-robot" aria-hidden="true"></i> Automation</div>
+        <div class="tech-chip"><i class="fab fa-github" aria-hidden="true"></i> GitHub</div>
+        <div class="tech-chip"><i class="fab fa-linux" aria-hidden="true"></i> Linux</div>
+        <div class="tech-chip"><i class="fas fa-network-wired" aria-hidden="true"></i> Networking</div>
+        <div class="tech-chip"><i class="fas fa-database" aria-hidden="true"></i> Databases</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  ROADMAP                                    -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="roadmap" class="section roadmap-section" aria-label="Future Roadmap">
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag">Roadmap</div>
+        <h2 class="section-headline centered">The Journey<br><span class="text-accent">Ahead</span></h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-line" id="timelineLine" aria-hidden="true"></div>
+
+        <div class="timeline-item scroll-reveal" style="--reveal-delay: 0s">
+          <div class="timeline-node" aria-hidden="true"><span>2026</span></div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-year">2026</div>
+            <h3>Foundation &amp; Community Growth</h3>
+            <p>Building our core community of technology enthusiasts, researchers, and innovators. Establishing a strong local presence.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item scroll-reveal" style="--reveal-delay: 0.1s">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-card glass-card">
+            <h3>Technology Workshops</h3>
+            <p>Launching hands-on cybersecurity and programming workshops for students and professionals across institutions.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item scroll-reveal" style="--reveal-delay: 0.2s">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-card glass-card">
+            <h3>AI Products</h3>
+            <p>Releasing our first suite of AI-powered tools — intelligent automation, education aids, and business optimization products.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item scroll-reveal" style="--reveal-delay: 0.3s">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-card glass-card">
+            <h3>Cybersecurity Lab</h3>
+            <p>Establishing a dedicated ethical hacking and cybersecurity research lab for advanced training and assessments.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item scroll-reveal" style="--reveal-delay: 0.4s">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-card glass-card">
+            <h3>Research Initiatives</h3>
+            <p>Partnering with institutions to publish research in AI, cybersecurity, and emerging technologies. Open-source contributions begin.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item scroll-reveal" style="--reveal-delay: 0.5s">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-card glass-card">
+            <h3>Cloud Services Platform</h3>
+            <p>Launching managed cloud infrastructure and IT support services for businesses, startups, and educational institutions.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item scroll-reveal" style="--reveal-delay: 0.6s">
+          <div class="timeline-node" aria-hidden="true"></div>
+          <div class="timeline-card glass-card">
+            <h3>Innovation Hub</h3>
+            <p>Creating a collaborative space for developers, researchers, and entrepreneurs to build and scale ethical technology products.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  COMMUNITY IMPACT                           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="impact" class="section impact-section" aria-label="Community Impact">
+    <div class="impact-bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag">Community Impact</div>
+        <h2 class="section-headline centered">Growing<br><span class="text-accent">Every Day</span></h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card glass-card scroll-reveal" style="--reveal-delay: 0s">
+          <div class="stat-number counter" data-target="500" data-suffix="+">0</div>
+          <div class="stat-label">Community Members</div>
+          <div class="stat-sub">And growing every month</div>
+        </div>
+        <div class="stat-card glass-card scroll-reveal" style="--reveal-delay: 0.15s">
+          <div class="stat-number counter" data-target="20" data-suffix="+">0</div>
+          <div class="stat-label">Technology Workshops</div>
+          <div class="stat-sub">Hands-on sessions delivered</div>
+        </div>
+        <div class="stat-card glass-card scroll-reveal" style="--reveal-delay: 0.3s">
+          <div class="stat-number counter" data-target="50" data-suffix="+">0</div>
+          <div class="stat-label">Projects Completed</div>
+          <div class="stat-sub">From concept to deployment</div>
+        </div>
+        <div class="stat-card glass-card scroll-reveal" style="--reveal-delay: 0.45s">
+          <div class="stat-number counter" data-target="10" data-suffix="+">0</div>
+          <div class="stat-label">Training Programs</div>
+          <div class="stat-sub">Empowering future technologists</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  FOUNDER'S VISION                           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="founder" class="section founder-section" aria-label="Founder's Vision">
+    <div class="founder-aurora" aria-hidden="true"></div>
+    <div class="container">
+      <div class="founder-content scroll-reveal">
+        <div class="quote-mark" aria-hidden="true">"</div>
+        <blockquote class="founder-quote">
+          Technology should empower people through innovation, responsibility, and security.
+        </blockquote>
+        <div class="founder-attribution">
+          <div class="attribution-line" aria-hidden="true"></div>
+          <div class="attribution-info">
+            <span class="attribution-name">Founder</span>
+            <span class="attribution-title">EthicsBids Technologies</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  CONTACT                                    -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="contact" class="section contact-section" aria-label="Contact">
+    <div class="contact-aurora" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <div class="section-tag">Get In Touch</div>
+        <h2 class="section-headline centered">Let's Build Ethical<br><span class="text-accent">Technology Together</span></h2>
+        <p class="section-desc centered">Ready to collaborate? Reach out through any channel — we respond fast.</p>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-info-grid scroll-reveal">
+          <a href="tel:+916383649726" class="contact-card glass-card magnetic-btn" aria-label="Call us">
+            <div class="contact-card-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">Phone</span>
+              <span class="contact-card-value">+91 6383649726</span>
+            </div>
+            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a href="mailto:ethicbids@gmail.com" class="contact-card glass-card magnetic-btn" aria-label="Email us">
+            <div class="contact-card-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">Email</span>
+              <span class="contact-card-value">ethicbids@gmail.com</span>
+            </div>
+            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a href="https://ethicbids.vercel.app" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn" aria-label="Visit our website">
+            <div class="contact-card-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">Website</span>
+              <span class="contact-card-value">ethicbids.vercel.app</span>
+            </div>
+            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a href="https://github.com/ethicbids-tech" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn" aria-label="View our GitHub">
+            <div class="contact-card-icon"><i class="fab fa-github" aria-hidden="true"></i></div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">GitHub</span>
+              <span class="contact-card-value">ethicbids-tech</span>
+            </div>
+            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a href="https://instagram.com/ethicbids_official" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn" aria-label="Follow us on Instagram">
+            <div class="contact-card-icon"><i class="fab fa-instagram" aria-hidden="true"></i></div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">Instagram</span>
+              <span class="contact-card-value">@ethicbids_official</span>
+            </div>
+            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a href="https://wa.me/916383649726" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn contact-card-whatsapp" aria-label="Chat on WhatsApp">
+            <div class="contact-card-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
+            <div class="contact-card-body">
+              <span class="contact-card-label">WhatsApp</span>
+              <span class="contact-card-value">Chat Instantly</span>
+            </div>
+            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <div class="contact-cta-block scroll-reveal" style="--reveal-delay: 0.2s">
+          <div class="contact-cta-card glass-card">
+            <div class="contact-cta-aurora" aria-hidden="true"></div>
+            <h3>Partner With Us</h3>
+            <p>Whether you're a startup, institution, or enterprise — let's discuss how EthicsBids Technologies can accelerate your digital journey.</p>
+            <div class="contact-cta-actions">
+              <a href="https://wa.me/916383649726" target="_blank" rel="noopener" class="btn btn-primary magnetic-btn" id="waBtn">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <span>WhatsApp Us</span>
+              </a>
+              <a href="mailto:ethicbids@gmail.com" class="btn btn-ghost magnetic-btn" id="emailBtn">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                <span>Send Email</span>
+              </a>
+              <a href="https://github.com/ethicbids-tech" target="_blank" rel="noopener" class="btn btn-ghost magnetic-btn" id="ghBtn">
+                <i class="fab fa-github" aria-hidden="true"></i>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  FOOTER                                     -->
+  <!-- ═══════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="footer-logo" aria-label="EthicsBids Technologies">
+            <img src="images/logo.png" alt="EthicsBids Technologies" class="footer-logo-img">
+            <span>EthicsBids Technologies</span>
+          </a>
+          <p class="footer-tagline">Where Ethics Meets Technology</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <h4>Navigation</h4>
+          <ul role="list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#stack">Technologies</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-social-links">
+            <a href="https://github.com/ethicbids-tech" target="_blank" rel="noopener" class="footer-social-link" aria-label="GitHub">
+              <i class="fab fa-github" aria-hidden="true"></i>
+            </a>
+            <a href="https://instagram.com/ethicbids_official" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="mailto:ethicbids@gmail.com" class="footer-social-link" aria-label="Email">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </a>
+            <a href="https://wa.me/916383649726" target="_blank" rel="noopener" class="footer-social-link" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EthicsBids Technologies. All rights reserved.</p>
+        <p class="footer-bottom-tagline">Where Ethics Meets Technology</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/916383649726" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    <span class="whatsapp-tooltip">Chat with us</span>
+  </a>
+
+  <!-- Back to Top -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
