@@ -24,6 +24,7 @@
 
   <!-- Custom Cursor -->
   <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
 
   <!-- Preloader -->
   <div id="preloader" class="preloader" aria-hidden="true">
@@ -646,81 +647,141 @@
       </div>
 
       <div class="contact-layout">
-        <div class="contact-info-grid scroll-reveal">
-          <a href="tel:+916383649726" class="contact-card glass-card magnetic-btn" aria-label="Call us">
-            <div class="contact-card-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
-            <div class="contact-card-body">
-              <span class="contact-card-label">Phone</span>
-              <span class="contact-card-value">+91 6383649726</span>
-            </div>
-            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
-          </a>
+        <div class="contact-info-col scroll-reveal">
+          <div class="contact-info-grid">
+            <a href="tel:+916383649726" class="contact-card glass-card magnetic-btn" aria-label="Call us">
+              <div class="contact-card-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
+              <div class="contact-card-body">
+                <span class="contact-card-label">Phone</span>
+                <span class="contact-card-value">+91 6383649726</span>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+            </a>
 
-          <a href="mailto:ethicbids@gmail.com" class="contact-card glass-card magnetic-btn" aria-label="Email us">
-            <div class="contact-card-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-            <div class="contact-card-body">
-              <span class="contact-card-label">Email</span>
-              <span class="contact-card-value">ethicbids@gmail.com</span>
-            </div>
-            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
-          </a>
+            <a href="mailto:ethicbids@gmail.com" class="contact-card glass-card magnetic-btn" aria-label="Email us">
+              <div class="contact-card-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+              <div class="contact-card-body">
+                <span class="contact-card-label">Email</span>
+                <span class="contact-card-value">ethicbids@gmail.com</span>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+            </a>
 
-          <a href="https://ethicbids.vercel.app" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn" aria-label="Visit our website">
-            <div class="contact-card-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
-            <div class="contact-card-body">
-              <span class="contact-card-label">Website</span>
-              <span class="contact-card-value">ethicbids.vercel.app</span>
-            </div>
-            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
-          </a>
+            <a href="https://ethicbids.vercel.app" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn" aria-label="Visit our website">
+              <div class="contact-card-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
+              <div class="contact-card-body">
+                <span class="contact-card-label">Website</span>
+                <span class="contact-card-value">ethicbids.vercel.app</span>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+            </a>
 
-          <a href="https://github.com/ethicbids-tech" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn" aria-label="View our GitHub">
-            <div class="contact-card-icon"><i class="fab fa-github" aria-hidden="true"></i></div>
-            <div class="contact-card-body">
-              <span class="contact-card-label">GitHub</span>
-              <span class="contact-card-value">ethicbids-tech</span>
-            </div>
-            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
-          </a>
+            <a href="https://github.com/ethicbids-tech" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn" aria-label="View our GitHub">
+              <div class="contact-card-icon"><i class="fab fa-github" aria-hidden="true"></i></div>
+              <div class="contact-card-body">
+                <span class="contact-card-label">GitHub</span>
+                <span class="contact-card-value">ethicbids-tech</span>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+            </a>
 
-          <a href="https://instagram.com/ethicbids_official" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn" aria-label="Follow us on Instagram">
-            <div class="contact-card-icon"><i class="fab fa-instagram" aria-hidden="true"></i></div>
-            <div class="contact-card-body">
-              <span class="contact-card-label">Instagram</span>
-              <span class="contact-card-value">@ethicbids_official</span>
-            </div>
-            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
-          </a>
+            <a href="https://instagram.com/ethicbids_official" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn" aria-label="Follow us on Instagram">
+              <div class="contact-card-icon"><i class="fab fa-instagram" aria-hidden="true"></i></div>
+              <div class="contact-card-body">
+                <span class="contact-card-label">Instagram</span>
+                <span class="contact-card-value">@ethicbids_official</span>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+            </a>
 
-          <a href="https://wa.me/916383649726" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn contact-card-whatsapp" aria-label="Chat on WhatsApp">
-            <div class="contact-card-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
-            <div class="contact-card-body">
-              <span class="contact-card-label">WhatsApp</span>
-              <span class="contact-card-value">Chat Instantly</span>
+            <a href="https://wa.me/916383649726" target="_blank" rel="noopener" class="contact-card glass-card magnetic-btn contact-card-whatsapp" aria-label="Chat on WhatsApp">
+              <div class="contact-card-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
+              <div class="contact-card-body">
+                <span class="contact-card-label">WhatsApp</span>
+                <span class="contact-card-value">Chat Instantly</span>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <!-- Quick QR Trigger Card -->
+          <div class="qr-preview-card glass-card" id="qrPreviewCard">
+            <div class="qr-preview-thumb">
+              <img src="images/whatsapp-qr.png" alt="WhatsApp QR Code Preview" class="qr-thumb-img">
+              <div class="qr-thumb-badge"><i class="fas fa-qrcode"></i></div>
             </div>
-            <i class="fas fa-arrow-up-right-from-square contact-card-arrow" aria-hidden="true"></i>
-          </a>
+            <div class="qr-preview-info">
+              <h4>Scan to Chat on WhatsApp</h4>
+              <p>Scan with your mobile camera or WhatsApp to start a direct secure conversation.</p>
+              <button type="button" class="btn btn-ghost btn-sm magnetic-btn" id="openQrModalBtn">
+                <i class="fas fa-expand"></i>
+                <span>Enlarge QR Code</span>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div class="contact-cta-block scroll-reveal" style="--reveal-delay: 0.2s">
-          <div class="contact-cta-card glass-card">
-            <div class="contact-cta-aurora" aria-hidden="true"></div>
-            <h3>Partner With Us</h3>
-            <p>Whether you're a startup, institution, or enterprise — let's discuss how EthicsBids Technologies can accelerate your digital journey.</p>
-            <div class="contact-cta-actions">
-              <a href="https://wa.me/916383649726" target="_blank" rel="noopener" class="btn btn-primary magnetic-btn" id="waBtn">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                <span>WhatsApp Us</span>
-              </a>
-              <a href="mailto:ethicbids@gmail.com" class="btn btn-ghost magnetic-btn" id="emailBtn">
-                <i class="fas fa-envelope" aria-hidden="true"></i>
-                <span>Send Email</span>
-              </a>
-              <a href="https://github.com/ethicbids-tech" target="_blank" rel="noopener" class="btn btn-ghost magnetic-btn" id="ghBtn">
-                <i class="fab fa-github" aria-hidden="true"></i>
-                <span>GitHub</span>
-              </a>
+        <!-- Interactive Contact / Quote Form -->
+        <div class="contact-form-col scroll-reveal" style="--reveal-delay: 0.2s">
+          <div class="contact-form-card glass-card">
+            <div class="contact-form-aurora" aria-hidden="true"></div>
+            <div class="contact-form-header">
+              <div class="form-tag"><i class="fas fa-bolt"></i> Fast Response</div>
+              <h3>Send Us a Message</h3>
+              <p>Tell us about your project or inquiry. Our engineers and consultants will get back to you promptly.</p>
             </div>
+
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/mqaebrvl" method="POST">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contactName">Your Name <span class="required">*</span></label>
+                  <div class="input-wrap">
+                    <i class="fas fa-user input-icon" aria-hidden="true"></i>
+                    <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. Alex Morgan" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="contactEmail">Your Email <span class="required">*</span></label>
+                  <div class="input-wrap">
+                    <i class="fas fa-envelope input-icon" aria-hidden="true"></i>
+                    <input type="email" id="contactEmail" name="email" class="form-input" placeholder="e.g. alex@company.com" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactService">Service Needed <span class="required">*</span></label>
+                <div class="input-wrap">
+                  <i class="fas fa-layer-group input-icon" aria-hidden="true"></i>
+                  <select id="contactService" name="service" class="form-input form-select" required>
+                    <option value="" disabled selected>Select a Service</option>
+                    <option value="Cybersecurity & Pentesting">Cybersecurity &amp; Penetration Testing</option>
+                    <option value="Software Development">Software &amp; Web/Mobile Development</option>
+                    <option value="Cloud & IT Solutions">Cloud &amp; IT Infrastructure</option>
+                    <option value="AI & Automation">AI &amp; Intelligent Automation</option>
+                    <option value="Training & Workshops">Professional Training &amp; Workshops</option>
+                    <option value="Research & Innovation">Research &amp; Product Innovation</option>
+                    <option value="Technology Consulting">Technology Consulting &amp; Advisory</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage">Project Details / Message <span class="required">*</span></label>
+                <div class="input-wrap textarea-wrap">
+                  <i class="fas fa-comment-dots input-icon" aria-hidden="true"></i>
+                  <textarea id="contactMessage" name="message" class="form-input form-textarea" rows="4" placeholder="Briefly describe your objectives, scope, or timeline..." required></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary form-submit-btn magnetic-btn" id="contactSubmitBtn">
+                <span class="btn-text">Send Message</span>
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              </button>
+
+              <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
+            </form>
           </div>
         </div>
       </div>
@@ -780,11 +841,52 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp -->
-  <a href="https://wa.me/916383649726" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    <span class="whatsapp-tooltip">Chat with us</span>
-  </a>
+  <!-- Floating Quick Actions -->
+  <div class="floating-actions">
+    <!-- QR Scan Floating Trigger -->
+    <button id="floatingQrBtn" class="floating-btn floating-qr-btn" aria-label="Scan WhatsApp QR code">
+      <i class="fas fa-qrcode" aria-hidden="true"></i>
+      <span class="floating-tooltip">Scan WhatsApp QR</span>
+    </button>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/916383649726" target="_blank" rel="noopener" class="floating-btn whatsapp-float" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp" aria-hidden="true"></i>
+      <span class="floating-tooltip">Chat on WhatsApp</span>
+    </a>
+  </div>
+
+  <!-- WhatsApp QR Code Modal -->
+  <div id="qrModal" class="qr-modal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle" aria-hidden="true">
+    <div class="qr-modal-backdrop" id="qrModalBackdrop"></div>
+    <div class="qr-modal-card glass-card">
+      <button class="qr-modal-close" id="qrModalClose" aria-label="Close QR modal">
+        <i class="fas fa-xmark" aria-hidden="true"></i>
+      </button>
+
+      <div class="qr-modal-header">
+        <div class="qr-badge"><i class="fab fa-whatsapp"></i> WhatsApp Direct</div>
+        <h3 id="qrModalTitle">Scan to Chat with Us</h3>
+        <p>Open WhatsApp or your camera app on your phone and scan the QR code below to connect instantly.</p>
+      </div>
+
+      <div class="qr-img-wrapper">
+        <img src="images/whatsapp-qr.png" alt="EthicsBids Technologies WhatsApp QR Code" class="qr-modal-img">
+        <div class="qr-scan-line" aria-hidden="true"></div>
+      </div>
+
+      <div class="qr-modal-footer">
+        <div class="qr-phone-pill">
+          <i class="fas fa-phone"></i>
+          <span>+91 6383649726</span>
+        </div>
+        <a href="https://wa.me/916383649726" target="_blank" rel="noopener" class="btn btn-primary magnetic-btn qr-chat-btn">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          <span>Open Chat Directly</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- Back to Top -->
   <button id="backToTop" class="back-to-top" aria-label="Back to top">

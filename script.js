@@ -61,34 +61,61 @@ function triggerHeroAnimations() {
 }
 
 /* ═══════════════════════════════════════════════════════
-   2. CUSTOM CURSOR
+   2. CUSTOM CURSOR WITH PRECISION DOT & GLOW
    ═══════════════════════════════════════════════════════ */
 (function initCursor() {
   if (isMobile() || prefersReducedMotion) return;
 
-  const cursor = $('#cursor-glow');
-  if (!cursor) return;
+  const glow = $('#cursor-glow');
+  const dot = $('#cursor-dot');
+  if (!glow && !dot) return;
+
+  document.body.classList.add('has-custom-cursor');
 
   document.addEventListener('mousemove', e => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+
+    // Instant tracking for the precision center dot
+    if (dot) {
+      dot.style.left = mouseX + 'px';
+      dot.style.top = mouseY + 'px';
+    }
   });
 
   document.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
+    if (glow) glow.style.opacity = '0';
+    if (dot) dot.style.opacity = '0';
   });
   document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
+    if (glow) glow.style.opacity = '1';
+    if (dot) dot.style.opacity = '1';
   });
 
-  function animateCursor() {
-    cursorX = lerp(cursorX, mouseX, 0.08);
-    cursorY = lerp(cursorY, mouseY, 0.08);
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    requestAnimationFrame(animateCursor);
+  // Hover state detection on interactive items
+  const interactiveSelector = 'a, button, input, select, textarea, .magnetic-btn, .tilt-card, .contact-card, .qr-preview-card, .tech-chip';
+  document.addEventListener('mouseover', e => {
+    if (dot && e.target.closest(interactiveSelector)) {
+      dot.classList.add('hovered');
+    }
+  });
+  document.addEventListener('mouseout', e => {
+    if (dot && e.target.closest(interactiveSelector)) {
+      dot.classList.remove('hovered');
+    }
+  });
+
+  // Smooth lerping for the ambient trailing glow
+  function animateCursorGlow() {
+    if (glow) {
+      cursorX = lerp(cursorX, mouseX, 0.12);
+      cursorY = lerp(cursorY, mouseY, 0.12);
+      glow.style.left = cursorX + 'px';
+      glow.style.top = cursorY + 'px';
+    }
+    requestAnimationFrame(animateCursorGlow);
   }
-  animateCursor();
+  animateCursorGlow();
 })();
 
 /* ═══════════════════════════════════════════════════════
@@ -161,20 +188,30 @@ function triggerHeroAnimations() {
 })();
 
 /* ═══════════════════════════════════════════════════════
-   4. HERO CANVAS — ANIMATED GRID
+   4. HERO CANVAS — HIGH-DPI & INTERSECTION OPTIMIZED
    ═══════════════════════════════════════════════════════ */
 (function initHeroCanvas() {
   const canvas = $('#heroCanvas');
-  if (!canvas || prefersReducedMotion) return;
+  const heroSection = $('#hero');
+  if (!canvas || !heroSection || prefersReducedMotion) return;
 
   const ctx = canvas.getContext('2d');
   let W, H, cols, rows, gridSize;
-  let animFrame;
+  let dpr = 1;
+  let animFrame = null;
+  let isCanvasActive = true;
   let t = 0;
 
   function resize() {
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    dpr = window.devicePixelRatio || 1;
+    W = canvas.offsetWidth;
+    H = canvas.offsetHeight;
+
+    // High-DPI scaling: physical pixel buffer scaled by devicePixelRatio
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
     gridSize = isMobile() ? 50 : 70;
     cols = Math.ceil(W / gridSize) + 1;
     rows = Math.ceil(H / gridSize) + 1;
@@ -231,9 +268,29 @@ function triggerHeroAnimations() {
   }
 
   function loop() {
+    if (!isCanvasActive) return;
     drawGrid();
     animFrame = requestAnimationFrame(loop);
   }
+
+  // Optimize: Disconnect loop when hero is off-screen
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      isCanvasActive = entry.isIntersecting;
+      if (isCanvasActive) {
+        if (!animFrame) {
+          animFrame = requestAnimationFrame(loop);
+        }
+      } else {
+        if (animFrame) {
+          cancelAnimationFrame(animFrame);
+          animFrame = null;
+        }
+      }
+    });
+  }, { threshold: 0.02 });
+
+  heroObserver.observe(heroSection);
 
   window.addEventListener('resize', resize, { passive: true });
   resize();
@@ -532,6 +589,110 @@ window.addEventListener('scroll', () => {
     requestAnimationFrame(() => {
       document.documentElement.style.opacity = '1';
     });
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════
+   18. INTERACTIVE CONTACT FORM (FORMSPREE & ASYNC AJAX)
+   ═══════════════════════════════════════════════════════ */
+(function initContactForm() {
+  const form = $('#contactForm');
+  const submitBtn = $('#contactSubmitBtn');
+  const statusEl = $('#formStatus');
+  if (!form || !submitBtn || !statusEl) return;
+
+  const btnText = submitBtn.querySelector('.btn-text');
+  const originalText = btnText ? btnText.textContent : 'Send Message';
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    if (btnText) btnText.textContent = 'Sending Message...';
+    submitBtn.classList.add('loading');
+    statusEl.className = 'form-status loading';
+    statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting your message to EthicsBids Technologies...';
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        statusEl.className = 'form-status success';
+        statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been received. Our team will contact you within 24 hours.';
+        form.reset();
+      } else {
+        const data = await response.json().catch(() => ({}));
+        const errMessage = (data && data.errors && data.errors.map(err => err.message).join(', ')) ||
+                           'Unable to submit form at this moment.';
+        statusEl.className = 'form-status error';
+        statusEl.innerHTML = `<i class="fas fa-triangle-exclamation"></i> ${errMessage} <br><a href="mailto:ethicbids@gmail.com?subject=Inquiry%20via%20EthicsBids%20Website" style="text-decoration:underline;color:#fff;margin-top:6px;display:inline-block;">Click here to email us directly &rarr;</a>`;
+      }
+    } catch (err) {
+      statusEl.className = 'form-status error';
+      statusEl.innerHTML = `<i class="fas fa-circle-exclamation"></i> Network error. <a href="mailto:ethicbids@gmail.com?subject=Inquiry%20via%20EthicsBids%20Website" style="text-decoration:underline;color:#fff;font-weight:600;">Click to email us directly &rarr;</a> or reach us on WhatsApp at +91 6383649726.`;
+    } finally {
+      submitBtn.disabled = false;
+      if (btnText) btnText.textContent = originalText;
+      submitBtn.classList.remove('loading');
+    }
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════
+   19. WHATSAPP QR CODE MODAL & FLOATING TRIGGERS
+   ═══════════════════════════════════════════════════════ */
+(function initWhatsAppQrModal() {
+  const modal = $('#qrModal');
+  const closeBtn = $('#qrModalClose');
+  const backdrop = $('#qrModalBackdrop');
+  const openButtons = [
+    $('#openQrModalBtn'),
+    $('#openQrBtn'),
+    $('#floatingQrBtn'),
+    $('#qrPreviewCard')
+  ].filter(Boolean);
+
+  if (!modal) return;
+
+  function openModal() {
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  openButtons.forEach(btn => {
+    btn.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
   });
 })();
 

@@ -57,14 +57,26 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  cursor: none;
+  cursor: default;
+}
+
+@media (min-width: 769px) {
+  body.has-custom-cursor { cursor: none; }
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor select,
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor .magnetic-btn,
+  body.has-custom-cursor .contact-card { cursor: none; }
 }
 
 @media (max-width: 768px) {
   body { cursor: auto; }
+  .cursor-dot, .cursor-glow { display: none !important; }
 }
 
-a { text-decoration: none; color: inherit; }
+a { text-decoration: none; color: inherit; cursor: pointer; }
 ul { list-style: none; }
 img { display: block; max-width: 100%; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; }
@@ -74,17 +86,44 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 ::-webkit-scrollbar-track { background: var(--bg-0); }
 ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 10px; }
 
-/* ─── 4. CURSOR GLOW ─────────────────────────────────── */
+/* ─── 4. CURSOR & GLOW ───────────────────────────────── */
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: var(--cyan);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px var(--cyan), 0 0 20px var(--blue);
+  transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              border-color 0.2s ease,
+              opacity 0.2s ease;
+  will-change: left, top;
+}
+
+.cursor-dot.hovered {
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 255, 229, 0.15);
+  border: 1.5px solid var(--cyan);
+  box-shadow: 0 0 18px rgba(0, 255, 229, 0.6), inset 0 0 10px rgba(0, 191, 255, 0.3);
+}
+
 .cursor-glow {
   position: fixed;
-  width: 400px; height: 400px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,191,255,0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,191,255,0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s linear, opacity 0.3s;
-  will-change: transform;
+  transition: opacity 0.3s;
+  will-change: left, top;
 }
 
 /* ─── 5. PRELOADER ───────────────────────────────────── */
@@ -1244,9 +1283,15 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .contact-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.15fr;
   gap: 32px;
   align-items: start;
+}
+
+.contact-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .contact-info-grid {
@@ -1262,7 +1307,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   padding: 18px 20px;
   border-radius: var(--radius-sm);
   transition: all var(--transition-med);
-  cursor: none;
+  cursor: pointer;
 }
 .contact-card:hover {
   border-color: rgba(0,191,255,0.25);
@@ -1314,38 +1359,241 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .contact-card:hover .contact-card-arrow { color: var(--blue); transform: translateX(2px) translateY(-2px); }
 
-.contact-cta-card {
-  padding: 40px;
-  border-radius: var(--radius-lg);
+/* QR Preview Card */
+.qr-preview-card {
+  padding: 24px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, rgba(37,211,102,0.06), rgba(0,191,255,0.04));
+  border: 1px solid rgba(37,211,102,0.2);
+  transition: all var(--transition-med);
+}
+.qr-preview-card:hover {
+  border-color: rgba(37,211,102,0.4);
+  box-shadow: 0 8px 30px rgba(37,211,102,0.12);
+}
+.qr-preview-thumb {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  padding: 6px;
+  flex-shrink: 0;
+}
+.qr-thumb-img {
+  width: 100%;
   height: 100%;
-  min-height: 380px;
-  display: flex; flex-direction: column; justify-content: center;
+  object-fit: contain;
+}
+.qr-thumb-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: #25D366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+}
+.qr-preview-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.qr-preview-info h4 {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.qr-preview-info p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.btn-sm {
+  align-self: flex-start;
+  padding: 8px 16px;
+  font-size: 0.78rem;
+  border-radius: 8px;
+  margin-top: 4px;
+  gap: 6px;
+}
+
+/* Contact Form Column */
+.contact-form-card {
+  padding: 36px 32px;
+  border-radius: var(--radius-lg);
+  position: relative;
   overflow: hidden;
 }
-.contact-cta-aurora {
+.contact-form-aurora {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0,191,255,0.06), transparent 70%);
+  background: radial-gradient(ellipse 80% 60% at 50% 10%, rgba(0,191,255,0.06), transparent 70%);
   pointer-events: none;
 }
-.contact-cta-card h3 {
+.contact-form-header {
+  margin-bottom: 24px;
+  position: relative; z-index: 1;
+}
+.form-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.contact-form-header h3 {
   font-family: var(--font-head);
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--white);
-  margin-bottom: 12px;
-  position: relative; z-index: 1;
+  margin-bottom: 8px;
 }
-.contact-cta-card p {
-  font-size: 0.9rem;
+.contact-form-header p {
+  font-size: 0.88rem;
   color: var(--muted);
-  line-height: 1.75;
-  margin-bottom: 28px;
-  position: relative; z-index: 1;
-  max-width: 340px;
+  line-height: 1.6;
 }
-.contact-cta-actions {
-  display: flex; gap: 12px; flex-wrap: wrap;
-  position: relative; z-index: 1;
+
+.contact-form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(232,232,232,0.7);
+  letter-spacing: 0.02em;
+}
+.form-group label .required {
+  color: var(--cyan);
+}
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.input-wrap.textarea-wrap {
+  align-items: flex-start;
+}
+.input-icon {
+  position: absolute;
+  left: 14px;
+  color: rgba(232,232,232,0.3);
+  font-size: 0.88rem;
+  pointer-events: none;
+  transition: color var(--transition-fast);
+}
+.textarea-wrap .input-icon {
+  top: 14px;
+}
+.form-input {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px 12px 40px;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+.form-input::placeholder {
+  color: rgba(232,232,232,0.25);
+}
+.form-input:focus {
+  border-color: var(--blue);
+  background: rgba(0,191,255,0.03);
+  box-shadow: 0 0 16px rgba(0,191,255,0.18);
+}
+.input-wrap:focus-within .input-icon {
+  color: var(--cyan);
+}
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300BFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+  padding-right: 36px;
+}
+.form-select option {
+  background: #0D1117;
+  color: #fff;
+  padding: 10px;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-submit-btn {
+  margin-top: 6px;
+  width: 100%;
+  justify-content: center;
+  padding: 14px 24px;
+  cursor: pointer;
+}
+.form-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.form-status {
+  display: none;
+  font-size: 0.85rem;
+  padding: 12px 16px;
+  border-radius: 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+.form-status.success {
+  display: block;
+  background: rgba(37,211,102,0.1);
+  border: 1px solid rgba(37,211,102,0.3);
+  color: #25D366;
+}
+.form-status.error {
+  display: block;
+  background: rgba(255,75,75,0.1);
+  border: 1px solid rgba(255,75,75,0.3);
+  color: #ff6b6b;
+}
+.form-status.loading {
+  display: block;
+  background: rgba(0,191,255,0.08);
+  border: 1px solid rgba(0,191,255,0.2);
+  color: var(--blue);
 }
 
 /* ─── 24. FOOTER ─────────────────────────────────────── */
@@ -1442,29 +1690,61 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   color: rgba(0,191,255,0.4);
 }
 
-/* ─── 25. FLOATING ELEMENTS ──────────────────────────── */
-.whatsapp-float {
+/* ─── 25. FLOATING ELEMENTS & QR MODAL ─────────────── */
+.floating-actions {
   position: fixed;
-  bottom: 28px; right: 28px;
+  bottom: 28px;
+  right: 28px;
   z-index: 900;
-  width: 54px; height: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.floating-btn {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all var(--transition-med);
+  cursor: pointer;
+  border: none;
+}
+
+.floating-qr-btn {
+  background: var(--bg-1);
+  border: 1px solid rgba(0, 191, 255, 0.4);
+  color: var(--cyan);
+  font-size: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 191, 255, 0.2);
+}
+.floating-qr-btn:hover {
+  background: rgba(0, 191, 255, 0.15);
+  border-color: var(--cyan);
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 191, 255, 0.4);
+}
+
+.whatsapp-float {
   background: #25D366;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   color: #fff;
   box-shadow: 0 4px 24px rgba(37,211,102,0.4);
-  transition: all var(--transition-med);
-  cursor: none;
 }
 .whatsapp-float:hover {
   transform: scale(1.1) translateY(-2px);
   box-shadow: 0 8px 32px rgba(37,211,102,0.55);
 }
-.whatsapp-tooltip {
+
+.floating-tooltip {
   position: absolute;
-  right: calc(100% + 12px);
-  top: 50%; transform: translateY(-50%);
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--white);
@@ -1473,11 +1753,168 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   padding: 6px 12px;
   border-radius: 8px;
   white-space: nowrap;
-  opacity: 0; pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity var(--transition-fast);
   backdrop-filter: blur(8px);
 }
-.whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+.floating-btn:hover .floating-tooltip {
+  opacity: 1;
+}
+
+/* WhatsApp QR Code Modal */
+.qr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10005;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.qr-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+.qr-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 5, 0.82);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+.qr-modal-card {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  width: 100%;
+  padding: 36px 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  background: linear-gradient(135deg, rgba(13,17,23,0.96), rgba(17,24,32,0.98));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(37, 211, 102, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.qr-modal.open .qr-modal-card {
+  transform: scale(1) translateY(0);
+}
+.qr-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+.qr-modal-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  transform: rotate(90deg);
+}
+
+.qr-modal-header {
+  margin-bottom: 20px;
+}
+.qr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: 100px;
+  color: #25D366;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.qr-modal-header h3 {
+  font-family: var(--font-head);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.qr-modal-header p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.qr-img-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 16px;
+  background: #fff;
+  padding: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+.qr-modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.qr-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #25D366, transparent);
+  box-shadow: 0 0 12px #25D366;
+  animation: scanLaser 2.2s ease-in-out infinite alternate;
+}
+@keyframes scanLaser {
+  0% { top: 8%; opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { top: 92%; opacity: 0.3; }
+}
+
+.qr-modal-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.qr-phone-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: rgba(232, 232, 232, 0.7);
+  font-weight: 500;
+}
+.qr-chat-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.35);
+  gap: 8px;
+}
+.qr-chat-btn:hover {
+  box-shadow: 0 0 30px rgba(37, 211, 102, 0.55);
+}
 
 .back-to-top {
   position: fixed;
@@ -1494,7 +1931,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   transform: translateY(10px);
   pointer-events: none;
   transition: all var(--transition-med);
-  cursor: none;
+  cursor: pointer;
 }
 .back-to-top.visible {
   opacity: 1; transform: translateY(0); pointer-events: all;
@@ -1546,10 +1983,14 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .desktop-br { display: none; }
   .hero-sub { font-size: 0.9rem; }
   .contact-info-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form-card { padding: 26px 20px; }
+  .qr-preview-card { flex-direction: column; text-align: center; gap: 14px; }
+  .qr-preview-info { align-items: center; }
+  .btn-sm { align-self: center; }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   .about-pillars { grid-template-columns: 1fr; }
-  .contact-cta-card { padding: 28px; min-height: auto; }
 }
 
 @media (max-width: 480px) {
@@ -1559,6 +2000,10 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .hero-actions .btn { width: 100%; justify-content: center; }
   .stats-grid { grid-template-columns: 1fr; }
   .about-art { width: 220px; height: 220px; }
+  .floating-actions { bottom: 20px; right: 20px; gap: 10px; }
+  .floating-btn { width: 44px; height: 44px; }
+  .whatsapp-float { font-size: 1.25rem; }
+  .floating-qr-btn { font-size: 1.1rem; }
 }
 
 /* ─── 29. ACCESSIBILITY ──────────────────────────────── */
