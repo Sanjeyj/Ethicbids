@@ -1,0 +1,14 @@
+﻿# robots.txt — EthicBids Technologies
+# https://ethicbids.vercel.app/
+# Generated: 2026-10-31
+
+User-agent: *
+Allow: /
+
+# Disallow backup files (not served by Vercel but good practice)
+Disallow: /_backup_before_seo/
+Disallow: /.git/
+Disallow: /.vercel/
+
+# Sitemap location
+Sitemap: https://ethicbids.vercel.app/sitemap.xml

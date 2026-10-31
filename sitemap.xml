@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+          http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!--
+    EthicBids Technologies — Sitemap
+    Domain: https://ethicbids.vercel.app/
+    Generated: 2026-10-31
+    NOTE: This is a single-page application (SPA). All sections
+    are on the homepage. Individual section anchors are listed
+    as supplementary entries for discoverability.
+  -->
+
+  <!-- Homepage (primary URL) -->
+  <url>
+    <loc>https://ethicbids.vercel.app/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+</urlset>

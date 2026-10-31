@@ -1,5 +1,5 @@
 /**
- * EthicsBids Technologies — Premium Interactions Engine
+ * EthicBids Technologies — Premium Interactions Engine
  * Handles: Preloader, Cursor, Navbar, Canvas Grid, Particles,
  *          Scroll Reveal, Magnetic Buttons, Card Tilt, Count-Up,
  *          Timeline, Mobile Menu, Back to Top
@@ -30,7 +30,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   if (!preloader || !bar) return;
 
   let progress = 0;
-  const duration = 1800;
+  const duration = 1200; // Reduced from 1800ms for better LCP
   const start = performance.now();
 
   function tick(now) {
@@ -295,6 +295,13 @@ function triggerHeroAnimations() {
   window.addEventListener('resize', resize, { passive: true });
   resize();
   loop();
+
+  function loop() {
+    if (!canvasVisible) { animFrame = null; return; }
+    drawGrid();
+    animFrame = requestAnimationFrame(loop);
+  }
+
 })();
 
 /* ═══════════════════════════════════════════════════════
@@ -616,7 +623,7 @@ window.addEventListener('scroll', () => {
     if (btnText) btnText.textContent = 'Sending Message...';
     submitBtn.classList.add('loading');
     statusEl.className = 'form-status loading';
-    statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting your message to EthicsBids Technologies...';
+    statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting your message to EthicBids Technologies...';
 
     const formData = new FormData(form);
 
@@ -636,11 +643,11 @@ window.addEventListener('scroll', () => {
         const errMessage = (data && data.errors && data.errors.map(err => err.message).join(', ')) ||
                            'Unable to submit form at this moment.';
         statusEl.className = 'form-status error';
-        statusEl.innerHTML = `<i class="fas fa-triangle-exclamation"></i> ${errMessage} <br><a href="mailto:ethicbids@gmail.com?subject=Inquiry%20via%20EthicsBids%20Website" style="text-decoration:underline;color:#fff;margin-top:6px;display:inline-block;">Click here to email us directly &rarr;</a>`;
+        statusEl.innerHTML = `<i class="fas fa-triangle-exclamation"></i> ${errMessage} <br><a href="mailto:ethicbids@gmail.com?subject=Inquiry%20via%20EthicBids%20Website" style="text-decoration:underline;color:#fff;margin-top:6px;display:inline-block;">Click here to email us directly &rarr;</a>`;
       }
     } catch (err) {
       statusEl.className = 'form-status error';
-      statusEl.innerHTML = `<i class="fas fa-circle-exclamation"></i> Network error. <a href="mailto:ethicbids@gmail.com?subject=Inquiry%20via%20EthicsBids%20Website" style="text-decoration:underline;color:#fff;font-weight:600;">Click to email us directly &rarr;</a> or reach us on WhatsApp at +91 6383649726.`;
+      statusEl.innerHTML = `<i class="fas fa-circle-exclamation"></i> Network error. <a href="mailto:ethicbids@gmail.com?subject=Inquiry%20via%20EthicBids%20Website" style="text-decoration:underline;color:#fff;font-weight:600;">Click to email us directly &rarr;</a> or reach us on WhatsApp at +91 6383649726.`;
     } finally {
       submitBtn.disabled = false;
       if (btnText) btnText.textContent = originalText;
@@ -816,5 +823,5 @@ window.addEventListener('scroll', () => {
   });
 })();
 
-console.log('%cEthicsBids Technologies', 'font-size:16px;font-weight:bold;color:#00BFFF;');
+console.log('%cEthicBids Technologies', 'font-size:16px;font-weight:bold;color:#00BFFF;');
 console.log('%cWhere Ethics Meets Technology', 'font-size:11px;color:#888;');
