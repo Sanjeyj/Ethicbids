@@ -696,5 +696,125 @@ window.addEventListener('scroll', () => {
   });
 })();
 
+/* ═══════════════════════════════════════════════════════
+   20. RESEARCH & PRICING FILTER TABS
+   ═══════════════════════════════════════════════════════ */
+(function initPricingTabs() {
+  const tabs = $$('.pricing-tab');
+  const cards = $$('.pricing-card');
+  if (!tabs.length || !cards.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+
+      const filter = tab.dataset.filter;
+
+      cards.forEach(card => {
+        const category = card.dataset.category;
+        if (filter === 'all' || category === filter) {
+          card.classList.remove('pricing-hidden');
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(15px)';
+          requestAnimationFrame(() => {
+            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            card.style.opacity = '1';
+            card.style.transform = '';
+          });
+        } else {
+          card.classList.add('pricing-hidden');
+        }
+      });
+    });
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════
+   21. PRICING TO CONTACT FORM AUTO-SELECTION
+   ═══════════════════════════════════════════════════════ */
+(function initPricingFormSelect() {
+  const selectBtns = $$('.pricing-btn-select');
+  const serviceSelect = $('#contactService');
+  const contactSection = $('#contact');
+  if (!selectBtns.length || !serviceSelect || !contactSection) return;
+
+  selectBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const serviceName = btn.dataset.service;
+      if (!serviceName) return;
+
+      // Find matching option or closest match
+      let matched = false;
+      for (const opt of serviceSelect.options) {
+        if (opt.value === serviceName || opt.value.includes(serviceName) || serviceName.includes(opt.value)) {
+          serviceSelect.value = opt.value;
+          matched = true;
+          break;
+        }
+      }
+
+      // Smooth scroll to contact form
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Highlight select field
+      setTimeout(() => {
+        serviceSelect.focus();
+        serviceSelect.style.borderColor = 'var(--cyan)';
+        serviceSelect.style.boxShadow = '0 0 20px rgba(0, 255, 229, 0.4)';
+        setTimeout(() => {
+          serviceSelect.style.borderColor = '';
+          serviceSelect.style.boxShadow = '';
+        }, 2200);
+      }, 500);
+    });
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════
+   22. POSTER PREVIEW MODAL
+   ═══════════════════════════════════════════════════════ */
+(function initPosterModal() {
+  const modal = $('#posterModal');
+  const closeBtn = $('#posterModalClose');
+  const backdrop = $('#posterModalBackdrop');
+  const triggers = [$('#openPosterModalBtn'), $('#posterCardTrigger')].filter(Boolean);
+
+  if (!modal) return;
+
+  function openPosterModal() {
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closePosterModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  triggers.forEach(trig => {
+    trig.addEventListener('click', e => {
+      e.preventDefault();
+      openPosterModal();
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closePosterModal);
+  if (backdrop) backdrop.addEventListener('click', closePosterModal);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closePosterModal();
+    }
+  });
+})();
+
 console.log('%cEthicsBids Technologies', 'font-size:16px;font-weight:bold;color:#00BFFF;');
 console.log('%cWhere Ethics Meets Technology', 'font-size:11px;color:#888;');
