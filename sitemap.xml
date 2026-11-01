@@ -1,24 +1,83 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!--
-    EthicBids Technologies — Sitemap
-    Domain: https://ethicbids.vercel.app/
-    Generated: 2026-10-31
-    NOTE: This is a single-page application (SPA). All sections
-    are on the homepage. Individual section anchors are listed
-    as supplementary entries for discoverability.
-  -->
+  <!-- EthicBids Technologies — Official XML Sitemap -->
+  <!-- Domain: https://ethicbids.vercel.app/ -->
+  <!-- Updated: 2026-10-31 -->
 
-  <!-- Homepage (primary URL) -->
+  <!-- Homepage (Primary Portal) -->
   <url>
     <loc>https://ethicbids.vercel.app/</loc>
     <lastmod>2026-10-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Cybersecurity Services & Pentesting -->
+  <url>
+    <loc>https://ethicbids.vercel.app/cybersecurity.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Custom Software Development & Web Engineering -->
+  <url>
+    <loc>https://ethicbids.vercel.app/software-development.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- AI & Intelligent Automation Solutions -->
+  <url>
+    <loc>https://ethicbids.vercel.app/ai-solutions.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Technology Training & Internships -->
+  <url>
+    <loc>https://ethicbids.vercel.app/training.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Hands-on Technology Workshops & Seminars -->
+  <url>
+    <loc>https://ethicbids.vercel.app/workshops.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Student Projects & Academic Research Support -->
+  <url>
+    <loc>https://ethicbids.vercel.app/research-projects.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About EthicBids Technologies -->
+  <url>
+    <loc>https://ethicbids.vercel.app/about.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact & Direct Channels -->
+  <url>
+    <loc>https://ethicbids.vercel.app/contact.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
